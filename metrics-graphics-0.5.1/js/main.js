@@ -25,7 +25,7 @@ $(document).ready(function() {
     small.xax_count = 5;
 
     assignEventListeners();
-
+/*
     //generate a Bates distribution of 10 random variables
     var values = d3.range(10000).map(d3.random.bates(10));
     var x = d3.scale.linear()
@@ -175,25 +175,28 @@ $(document).ready(function() {
             y_accessor: 'value'
         })
     })
-
+*/
     d3.json('data/fake_users2.json', function(data) {
         for(var i=0;i<data.length;i++) {
-            data[i] = convert_dates(data[i], 'date');
+            data[i] = convert_dates(data[i], 'x');
+            console.log("data[i] ", data[i]);
         }
-
+        console.log("data ----- ",data);
         //add a multi-line chart
         moz_chart({
             title:"Multi-line Chart",
-            description: "This line chart contains multiple lines. We're still working out the style details.",
+            description: "Try",
+            legend: ['Line 1'],
+            legend_target: '#lg123',
             data: data,
             width: torso.width,
             height: torso.height,
             right: torso.right,
             target: '#fake_users2',
-            x_accessor: 'date',
+            x_accessor: 'x',
             y_accessor: 'value'
         })
-
+/*
         //add a wide multi-line chart
         moz_chart({
             title:"Multi-line Chart Wide",
@@ -226,8 +229,10 @@ $(document).ready(function() {
             x_accessor: 'date',
             y_accessor: 'value'
         })
+        */
     })
 
+/*
     d3.json('data/fake_users3.json', function(data) {  
         for(var i=0;i<data.length;i++) {
             data[i] = convert_dates(data[i], 'date');
@@ -666,6 +671,7 @@ $(document).ready(function() {
         //     y_accessor: 'y'
         // })
     })
+    */
 
 
 
@@ -748,7 +754,7 @@ $(document).ready(function() {
     //replace all SVG images with inline SVG
     //http://stackoverflow.com/questions/11978995/how-to-change-color-of-svg
     //-image-using-css-jquery-svg-image-replacement
-    $('img.svg').each(function() {
+    /*$('img.svg').each(function() {
         var $img = jQuery(this);
         var imgID = $img.attr('id');
         var imgClass = $img.attr('class');
@@ -774,5 +780,5 @@ $(document).ready(function() {
             $img.replaceWith($svg);
 
         }, 'xml');
-    })
+    })*/
 })

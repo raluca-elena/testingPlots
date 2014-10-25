@@ -14,11 +14,13 @@ function modify_time_period(data, past_n_days) {
 
 function convert_dates(data, x_accessor) {
     data = data.map(function(d) {
+        console.log("d first looks like ", d);
         var fff = d3.time.format('%Y-%m-%d');
         d[x_accessor] = fff.parse(d[x_accessor]);
+        console.log("d second looks like ", d);
         return d;
     });
-
+    console.log("DATA looks like ", data);
     return data;
 }
 
