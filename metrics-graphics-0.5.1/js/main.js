@@ -399,11 +399,11 @@ $(document).ready(function() {
         width: torso.width,
         height: torso.height
     })
-
+*/
     // lower section
     d3.json('data/brief-1.json', function(data) {
         data = convert_dates(data, 'date');
-        
+       /*
         moz_chart({
             title: "Linked Charts",
             description: "The two charts in this section are linked together. A rollover in one causes a rollover in the other.",
@@ -416,7 +416,7 @@ $(document).ready(function() {
             target: '#briefing-1',
             x_accessor: 'date',
             y_accessor: 'value'
-        })
+        })*/
 
         moz_chart({
             title: "Small Text Inferred By Size",
@@ -428,10 +428,16 @@ $(document).ready(function() {
             top: small.top,
             xax_count: 4,
             target: '#small1',
+            rollover_callback: function(d, i) {
+            $('#small1 svg .active_datapoint')
+              //.html('bucket: ' + d3.round(d.x,2) + ' Hits: ' + d.y);
+              .html('buckejshdakhdkashdkashdkashdkashdkashkdhaskdhkasdhkasdhkasdh +  hit no:lkjlkjljljljljl ' );
+
+          },
             x_accessor: 'date',
             y_accessor: 'value'
-        });
-
+        });});
+/*
         moz_chart({
             title: "No Y Axis",
             description: "Here is an example hiding the y axis.",
@@ -513,8 +519,8 @@ $(document).ready(function() {
             y_accessor: 'value'
         })
     })
-
-    d3.json('data/float.json', function(data) {
+*/
+ /*   d3.json('data/float.json', function(data) {
         data = convert_dates(data, 'date');
 
         moz_chart({
@@ -550,8 +556,8 @@ $(document).ready(function() {
             x_accessor: 'date',
             y_accessor: 'value'
         })
-    })
-
+    })*/
+/*
     d3.json('data/neg1.json', function(data) {
         data = convert_dates(data, 'date');
 
