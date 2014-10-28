@@ -3,7 +3,7 @@
 var charts = {};
 var globals = {};
 globals.link = false;
-globals.version = "0.5";
+globals.version = "0.5.1";
 
 function moz_chart() {
     var moz = {};
@@ -658,15 +658,10 @@ function init(args) {
     //add chart title if it's different than existing one
     chart_title(args);
 
-    //we kind of need axes in all cases
-    args.use_small_class = args.height - args.top - args.bottom - args.buffer 
-            <= args.small_height_threshold 
-        && args.width - args.left-args.right - args.buffer*2 
-            <= args.small_width_threshold 
-        || args.small_text;
-
     //draw axes
-
+    args.use_small_class = args.height - args.top - args.bottom - args.buffer 
+            <= args.small_height_threshold && args.width - args.left-args.right - args.buffer*2 
+            <= args.small_width_threshold || args.small_text;
 
     //if we're updating an existing chart and we have fewer lines than
     //before, remove the outdated lines, e.g. if we had 3 lines, and we're calling
@@ -1047,6 +1042,7 @@ charts.line = function(args) {
         //rollover text
         svg.append('text')
             .attr('class', 'active_datapoint')
+            .classed('active-datapoint-small', args.use_small_class)
             .attr('xml:space', 'preserve')
             .attr('x', args.width - args.right)
             .attr('y', args.top / 2)
@@ -2285,11 +2281,13 @@ function modify_time_period(data, past_n_days) {
 
 function convert_dates(data, x_accessor) {
     data = data.map(function(d) {
+        console.log("d first looks like ", d);
         var fff = d3.time.format('%Y-%m-%d');
         d[x_accessor] = fff.parse(d[x_accessor]);
+        console.log("d second looks like ", d);
         return d;
     });
-
+    console.log("DATA looks like ", data);
     return data;
 }
 
