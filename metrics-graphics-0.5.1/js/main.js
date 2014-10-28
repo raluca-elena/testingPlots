@@ -431,7 +431,7 @@ $(document).ready(function() {
             rollover_callback: function(d, i) {
             $('#small1 svg .active_datapoint')
               //.html('bucket: ' + d3.round(d.x,2) + ' Hits: ' + d.y);
-              .html('00011111111111111111222222222222222223333333333444444444444455555555555555' );
+              .html('000000000011111111112222233333444444445555666677778888889999999999');
 
           },
             x_accessor: 'date',
